@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% load static %}
+{% block page_content %}
+
+<h1>Boards</h1>
+<!--<div class="row">-->
+<!--{% for board in boards %}-->
+<!--    <div class="col-md-4 root">-->
+<!--        <div class="card mb-2">-->
+<!--            <div class="card-body">-->
+<!--                <h5 class="card-title">{{ board.title }}</h5>-->
+<!--                <a href="{% url 'board_detail' board.pk %}"-->
+<!--                   class="btn btn-outline-success" type="button">-->
+<!--                    {"Read more"}-->
+<!--                </a>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    {% endfor %}-->
+<!--</div>-->
+
+<!--<h1 class="title">Hover over the cards</h1>-->
+<link href="{% static 'board_index_css.css' %}" rel="stylesheet" type="text/css">
+<script src="{% static 'board_index_js.js' %}"></script>
+
+
+<div class="cards">
+{% for board in boards %}
+  <div class="card">
+    <div class="card__image-holder">
+<!--      <img class="card__image" src="{% static board.image %}" alt="wave" />-->
+<!--            <img class="card__image" src="{% static images %}" alt="wave" />-->
+
+    </div>
+    <div class="card-title">
+      <a href="{% url 'board_detail' board.pk %}" class="toggle-info btn">
+        <span class="left"></span>
+        <span class="right"></span>
+      </a>
+      <h2>
+          {{ board.title }}
+      </h2>
+    </div>
+    <div class="card-flap flap1">
+
+      <div class="card-flap flap2">
+        <div class="card-actions">
+          <a href="{% url 'board_detail' board.pk %}" class="btn">Read more</a>
+        </div>
+      </div>
+    </div>
+  </div>
+    {% endfor %}
+
+
+<li class="nav-item">
+        <a class="nav-link" href="{% url 'board-add' %}">Create Board</a>
+    </li>
+
+
+
+
+
+
+<!--<main class="page-content">-->
+<!--  {% for board in boards %}-->
+<!--  <div class="card">-->
+<!--    <div class="content">-->
+<!--      <h2 class="title">{{ board.title }}</h2>-->
+<!--      <p class="copy">Check out all of these gorgeous mountain trips with beautiful views of, you guessed it, the mountains</p>-->
+<!--      <button class="btn">View Trips</button>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--  {% endfor %}-->
+<!--</main>-->
+
+{% endblock %}
