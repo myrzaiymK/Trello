@@ -181,4 +181,3 @@ SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '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'
 
 import django_heroku
 django_heroku.settings(locals())
-
