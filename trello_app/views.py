@@ -130,12 +130,13 @@ def board_detail(request, pk):
     is_archive = False
 
     if board.archive.filter(pk=request.user.id).exists():
-        is_favourite = True
+        is_archive = True
 
     context = {
         'board': board,
         'boards': boards,
         'is_favourite': is_favourite,
+        'is_archive': is_archive,
     }
     return render(request, 'board/board_detail.html', context)
 

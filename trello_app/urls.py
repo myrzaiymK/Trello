@@ -1,5 +1,5 @@
 from django.urls import path, re_path
-from .views import board_detail, board_index, test_board, create_view, create_column, create_card, card_detail, delete, column_delete, card_delete, favourite_post, favourite_list
+from .views import board_detail, board_index, test_board, create_view, create_column, create_card, card_detail, delete, column_delete, card_delete, favourite_post, favourite_list, archive_post, archive_list
 
 urlpatterns = [
     path('', board_index),
@@ -18,5 +18,6 @@ urlpatterns = [
     # path('(?P<pk>\d+)/<slug:favourite_post>/', favourite_post, name='favourite_post'),
     path('<int:pk>/favourite_post/', favourite_post, name='favourite_post'),
     path("boards/favourites/", favourite_list, name="favourite_list"),
-
+    path('<int:pk>/archive_post/', archive_post, name='archive_post'),
+    path("boards/archive/", archive_list, name="archive_list"),
 ]

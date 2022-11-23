@@ -132,6 +132,23 @@
                 {% endif %}
     </div>
 
+    <div id="archive-section">
+                {% if is_archive %}
+        <a href="{% url 'archive_post' board.pk %}">
+            <button class="add-list-btn btn" role="button">remove from archive</button>
+        </a>
+
+        </a>
+                {% else %}
+
+                    <a href="{% url 'archive_post' board.pk %}">
+            <button class="add-list-btn btn" role="button">Add to archive</button>
+        </a>
+
+        </a>
+                {% endif %}
+    </div>
+
 
 </section>
 
