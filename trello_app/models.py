@@ -6,6 +6,7 @@ from django.db import models
 class Board(models.Model):
     title = models.CharField(max_length=150)
     image = models.ImageField(upload_to='new/%Y/%m/%d', null=True, blank=True)
+    favourites = models.ManyToManyField(User, related_name='favourites')
 
     def __str__(self):
         return self.title

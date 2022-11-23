@@ -28,25 +28,26 @@
 {% for board in boards %}
   <div class="card">
     <div class="card__image-holder">
-<!--      <img class="card__image" src="{% static board.image %}" alt="wave" />-->
-<!--            <img class="card__image" src="{% static images %}" alt="wave" />-->
 
     </div>
     <div class="card-title">
-      <a href="{% url 'board_detail' board.pk %}" class="toggle-info btn">
+      <a href="{% url 'delete_board' board.pk %}" class="toggle-info btn">
         <span class="left"></span>
         <span class="right"></span>
       </a>
+
       <h2>
           {{ board.title }}
       </h2>
+        <div class="card-actions">
+                <a href="{% url 'board_detail' board.pk %}" class="btn">Open</a>
+            </div>
     </div>
     <div class="card-flap flap1">
 
       <div class="card-flap flap2">
-        <div class="card-actions">
-          <a href="{% url 'board_detail' board.pk %}" class="btn">Read more</a>
-        </div>
+
+
       </div>
     </div>
   </div>

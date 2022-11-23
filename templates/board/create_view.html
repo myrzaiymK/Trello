@@ -9,13 +9,8 @@
         <form method="post">
             {% csrf_token %}
             {{ form.as_p }}
-            <input
-                value="Save"
-                type="submit">
-            <input
-                value="Cancel"
-                type="button"
-                onclick="history.back()">
+            <input value="Save" type="submit">
+            <input value="Cancel" type="button" onclick="history.back()">
         </form>
     </div>
 </div>

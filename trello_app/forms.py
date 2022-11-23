@@ -16,6 +16,10 @@ class ColumnForm(forms.ModelForm):
 		model = Column
 		fields = '__all__'
 
+		# fields = [
+		# 	"title",
+		# ]
+
 
 class CardForm(forms.ModelForm):
 	class Meta:

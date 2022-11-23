@@ -1,14 +1,8 @@
-from django.shortcuts import render, redirect
+from django.http import HttpResponseRedirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Board, Column
-from django.urls import reverse
-
-
-# Create your views here.
-
-
+from django.urls import reverse, reverse_lazy
 from django.shortcuts import render
-
-# relative import of forms
 from .models import Board
 from .forms import BoardForm
 from django.views.generic import (
@@ -18,10 +12,9 @@ from django.views.generic import (
     DeleteView,
 )
 from django.shortcuts import render
-
-# relative import of forms
 from .models import Board, Card
 from .forms import BoardForm, ColumnForm, CardForm
+
 
 
 def create_card(request):
@@ -30,20 +23,28 @@ def create_card(request):
     form = CardForm(request.POST or None)
     if form.is_valid():
         form.save()
+        # return redirect('/home/board/')
 
     context['form'] = form
     return render(request, "board/create_view.html", context)
 
 
+def card_delete(request, pk, template_name='card/card_delete.html'):
+    contact = get_object_or_404(Card, pk=pk)
+    if request.method=='POST':
+        contact.delete()
+        return redirect('/')
+    return render(request, template_name, {'object':contact})
+
+
 
 def card_detail(request, pk):
     card = Card.objects.get(pk=pk)
-    columns = list(card.column.all())
     context = {
         'card': card,
 
     }
-    return render(request, 'board/board_detail.html', context)
+    return render(request, 'card/card_detail.html', context)
 
 
 def create_column(request):
@@ -56,6 +57,13 @@ def create_column(request):
     context['form'] = form
     return render(request, "board/create_view.html", context)
 
+
+def column_delete(request, pk, template_name='column/column_delete.html'):
+    contact = get_object_or_404(Column, pk=pk)
+    if request.method=='POST':
+        contact.delete()
+        return redirect('/home/doards/')
+    return render(request, template_name, {'object':contact})
 
 
 def create_view(request):
@@ -70,27 +78,55 @@ def create_view(request):
 
 
 
+def delete(request, pk, template_name='board/board_delete.html'):
+    board = get_object_or_404(Board, pk=pk)
+    if request.method=='POST':
+        board.delete()
+        return redirect('/home/boards/')
+    return render(request, template_name, {'object':board})
+
+
 
 def board_index(request):
     boards = Board.objects.all()
+
     context = {
-        'boards': boards
+        'boards': boards,
+
     }
     return render(request, 'board/board_index.html', context)
 
 
+
+
+
 def board_detail(request, pk):
     board = Board.objects.get(pk=pk)
-    column = Column.objects.get(pk=pk)
-    columns = list(board.column.all())
-    cards = list(column.card.all())
+    boards = Board.objects.all()
+    is_favourite = False
+    if board.favourites.filter(pk=request.user.id).exists():
+        is_favourite = True
+
+
     context = {
         'board': board,
-        'columns': columns,
-        'cards': cards
+        'boards': boards,
+        'is_favourite': is_favourite,
+
+        # 'columns': columns,
+        # 'cards': cards
 
     }
     return render(request, 'board/board_detail.html', context)
+
+
+def favourite_post(request, pk):
+    board = get_object_or_404(Board, pk=pk)
+    if board.favourites.filter(pk=request.user.id).exists():
+        board.favourites.remove(request.user)
+    else:
+        board.favourites.add(request.user)
+    return HttpResponseRedirect(board.get_absolute_url())
 
 
 def test_board(request):
