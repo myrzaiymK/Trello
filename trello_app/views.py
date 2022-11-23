@@ -25,7 +25,7 @@ def archive_post(request, pk):
     if board.archive.filter(pk=request.user.id).exists():
         board.archive.remove(request.user)
     else:
-        board.favourites.add(request.user)
+        board.archive.add(request.user)
     return redirect(reverse("board_detail", kwargs={"pk": board.id}))
 
 
@@ -111,9 +111,26 @@ def delete(request, pk, template_name='board/board_delete.html'):
 
 def board_index(request):
     boards = Board.objects.all()
+    user = request.user
+    archive_posts = user.archive.all()
+    # context = {
+    #
+    #     'archive_posts': archive_posts,
+    # }
+    # board = Board.archive.filter(pk=request.user.id)
+
+    # is_archive = False
+
+    # for board in boards:
+    #
+    #     if board.archive.filter(pk=request.user.id).exists():
+
 
     context = {
         'boards': boards,
+        'archive_posts': archive_posts,
+
+        # 'board_pk': board,
 
     }
     return render(request, 'board/board_index.html', context)

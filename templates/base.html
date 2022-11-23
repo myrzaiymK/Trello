@@ -29,6 +29,10 @@
     {% if user.is_authenticated %}
          <li><a href="{% url 'boards' %}">Boards</a></li>
           <li><a href="{% url 'board_index' %}">User_Boards</a></li>
+                    <li><a href="{% url 'favourite_list' %}">Favourite_boards</a></li>
+
+                    <li><a href="{% url 'archive_list' %}">Archive</a></li>
+
 
         <li><a href="{% url 'logout' %}">Logout</a></li>
 

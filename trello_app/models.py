@@ -9,7 +9,7 @@ from django.urls import reverse
 
 
 class Board(models.Model):
-    title = models.CharField(max_length=150)
+    title = models.CharField(max_length=150, unique=True)
     image = models.ImageField(upload_to='new/%Y/%m/%d', null=True, blank=True)
     favourites = models.ManyToManyField(User, related_name="favourites", blank=True)
     archive = models.ManyToManyField(User, related_name="archive", blank=True)

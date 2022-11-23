@@ -10,6 +10,10 @@
 
 <div class="cards">
 {% for board in boards %}
+    {% if board in archive_posts %}
+    {% else %}
+
+
   <div class="card">
     <div class="card__image-holder">
 
@@ -37,12 +41,15 @@
       </div>
     </div>
   </div>
+                    {% endif %}
+
     {% endfor %}
 
 
-<li class="nav-item">
+    <li class="nav-item">
         <a class="nav-link" href="{% url 'board-add' %}">Create Board</a>
     </li>
+
 
 
 
