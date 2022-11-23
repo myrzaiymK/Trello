@@ -7,8 +7,8 @@
     <link href="{% static 'board_detail.css' %}" rel="stylesheet" type="text/css">
     <link rel=”stylesheet” href=”https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css”rel=”nofollow”
           integrity=”sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm” crossorigin=”anonymous”>
-    <link href="{% static 'board_index_css.css' %}" rel="stylesheet" type="text/css">
-    <script src="{% static 'board_index_js.js' %}"></script>
+    <script src="{% static 'fontawesomefree/js/all.min.js' %}"></script>
+    <link href="{% static 'fontawesomefree/css/all.min.css' %}" rel="stylesheet" type="text/css">
 
 </head>
 
@@ -114,12 +114,23 @@
     <a href="{% url 'column-add' %}">
         <button class="add-list-btn btn" role="button">Add a list</button>
     </a>
-    <!--    <div id="favourite-section">-->
-    <!--        <a href="#">-->
-    <!--            <span role="img" aria-label="Значок «Избранное»" style="&#45;&#45;icon-primary-color: var(&#45;&#45;dynamic-icon-color); &#45;&#45;icon-secondary-color: inherit;" class="css-snhnyn"><svg width="24" height="24" role="presentation" focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M7.49495 20.995L11.9999 18.6266L16.5049 20.995C16.8059 21.1533 17.1507 21.2079 17.4859 21.1504C18.3276 21.006 18.893 20.2066 18.7486 19.3649L17.8882 14.3485L21.5328 10.7959C21.7763 10.5585 21.9348 10.2475 21.9837 9.91094C22.1065 9.06576 21.5209 8.28106 20.6758 8.15825L15.6391 7.42637L13.3866 2.86236C13.2361 2.55739 12.9892 2.31054 12.6843 2.16003C11.9184 1.78206 10.9912 2.0965 10.6132 2.86236L8.36072 7.42637L3.32403 8.15825C2.98747 8.20715 2.67643 8.36564 2.43904 8.60917C1.84291 9.22074 1.85542 10.1998 2.46699 10.7959L6.11158 14.3485L5.25121 19.3649C5.19372 19.7 5.24833 20.0448 5.40658 20.3459C5.80401 21.1018 6.739 21.3924 7.49495 20.995ZM19.3457 10.0485L15.6728 13.6287L16.5398 18.684L11.9999 16.2972L7.45995 18.684L8.327 13.6287L4.65411 10.0485L9.72993 9.31093L11.9999 4.71146L14.2699 9.31093L19.3457 10.0485Z" fill="currentColor"></path></svg></span>-->
-    <!--            <i class="fa-light fa-star fa-lg"></i>-->
-    <!--        </a>-->
-    <!--    </div>-->
+
+
+
+    <div id="favourite-section">
+                {% if is_favourite %}
+        <a href="{% url 'favourite_post' board.pk %}">
+            <i class="fa-regular fa-star fa-lg"></i>
+            remove
+        </a>
+                {% else %}
+
+                <a href="{% url 'favourite_post' board.pk %}">
+            <i class="fa-regular fa-star fa-lg"></i>
+                    add
+        </a>
+                {% endif %}
+    </div>
 
 
 </section>

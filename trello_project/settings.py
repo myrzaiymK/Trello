@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'fontawesomefree',
     "users",
     "django.contrib.admin",
     "django.contrib.auth",
@@ -44,7 +45,6 @@ INSTALLED_APPS = [
     "trello_app",
     # "verify_email.apps.VerifyEmailConfig",
     'social.apps.django_app.default',
-
 ]
 
 # AUTH_USER_MODEL = 'users.CustomUser'

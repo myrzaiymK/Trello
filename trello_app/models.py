@@ -1,12 +1,18 @@
 import datetime
 from django.contrib.auth.models import User
 from django.db import models
+from django.shortcuts import redirect
+from django.urls import reverse
+
+
+# class Favourites(models.Mo )
 
 
 class Board(models.Model):
     title = models.CharField(max_length=150)
     image = models.ImageField(upload_to='new/%Y/%m/%d', null=True, blank=True)
-    favourites = models.ManyToManyField(User, related_name='favourites')
+    favourites = models.ManyToManyField(User, related_name="favourites", blank=True)
+    archive = models.ManyToManyField(User, related_name="archive", blank=True)
 
     def __str__(self):
         return self.title
