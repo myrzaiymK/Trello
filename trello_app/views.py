@@ -13,15 +13,13 @@ def archive_post(request, pk):
         board.archive.remove(request.user)
     else:
         board.archive.add(request.user)
-    return redirect(reverse("board_detail", kwargs={"pk": board.id}))
+    return redirect(reverse("board_index"))
 
 
 def archive_list(request):
     user = request.user
-    boards = Board.objects.all()
     archive_posts = user.archive.all()
     context = {
-        'boards': boards,
         'archive_posts': archive_posts,
     }
     return render(request, 'board/archive.html', context)
