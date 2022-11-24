@@ -1,5 +1,15 @@
 from django import forms
-from .models import Board, Column, Card
+from .models import Board, Column, Card, Comment
+
+
+from django import forms
+
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = '__all__'
+
 
 
 class BoardForm(forms.ModelForm):
@@ -9,7 +19,6 @@ class BoardForm(forms.ModelForm):
 			"title",
 			"image",
 		]
-
 
 class ColumnForm(forms.ModelForm):
 	class Meta:

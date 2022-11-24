@@ -1,5 +1,5 @@
 from django.urls import path, re_path
-from .views import board_detail, board_index, test_board, create_view, create_column, create_card, card_detail, delete, column_delete, card_delete, favourite_post, favourite_list, archive_post, archive_list
+from .views import board_detail, board_index, test_board, create_view, create_column, create_card, card_detail, delete, column_delete, card_delete, favourite_post, favourite_list, archive_post, archive_list, update_view
 
 urlpatterns = [
     path('', board_index),
@@ -10,6 +10,7 @@ urlpatterns = [
     path("board/<int:pk>/delete/", delete, name="delete_board"),
     path("column/add/", create_column, name="column-add"),
     path("card/add/", create_card, name="card-add"),
+    path("card/<int:pk>/update/", update_view, name="card-update"),
     path("card/<int:pk>/", card_detail, name="card-detail"),
     path('delete/<int:pk>', column_delete, name='column_delete'),
     path('card/<int:pk>/delete/', card_delete, name='card_delete'),

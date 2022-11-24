@@ -9,8 +9,8 @@ from django.urls import reverse
 
 
 class Board(models.Model):
-    title = models.CharField(max_length=150, unique=True)
-    image = models.ImageField(upload_to='new/%Y/%m/%d', null=True, blank=True)
+    title = models.CharField(max_length=150, blank=True, null=True)
+    image = models.ImageField(upload_to='images/')
     favourites = models.ManyToManyField(User, related_name="favourites", blank=True)
     archive = models.ManyToManyField(User, related_name="archive", blank=True)
 
@@ -35,13 +35,21 @@ class Card(models.Model):
 
     def __str__(self):
         return self.title
-#
-#
-# class Comments(models.Model):
-#     comment = models.TextField(max_length=300)
-#     author = models.ForeignKey(User, blank=True)
-#     date = models.DateField(default=datetime.date.today)
-#     card = models.ForeignKey(Card, blank=True)
+
+
+class Comment(models.Model):
+    body = models.TextField(max_length=300)
+    author = models.ForeignKey(User, blank=True, on_delete=models.CASCADE)
+    created_on = models.DateTimeField(auto_now_add=True)
+    card = models.ForeignKey('Card', blank=True, on_delete=models.CASCADE, related_name='comments')
+
+    class Meta:
+        ordering = ['created_on']
+
+    def __str__(self):
+        return 'Comment {} by {}'.format(self.body, self.card)
+
+
 #
 #
 # class CheckList(models.Model):

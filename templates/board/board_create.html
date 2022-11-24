@@ -6,14 +6,15 @@
 <h3>{{ title }}</h3>
 <div>
     <div>
-        <form method="post">
+        <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
             {{ form.as_p }}
             <input value="Save" type="submit">
-                    </form>
+        </form>
 
     </div>
 </div>
+
 
 
 {% endblock %}

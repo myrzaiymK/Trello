@@ -9,63 +9,32 @@
 
 
 <div class="cards">
-{% for board in boards %}
+    {% for board in boards %}
     {% if board in archive_posts %}
     {% else %}
-
-
-  <div class="card">
-    <div class="card__image-holder">
-
-    </div>
-    <div class="card-title">
-      <a href="{% url 'delete_board' board.pk %}" class="toggle-info btn">
-        <span class="left"></span>
-        <span class="right"></span>
-      </a>
-
-      <h2>
-          {{ board.title }}
-      </h2>
-        <div class="card-actions">
+    <div class="card">
+        <div class="card__image-holder">
+            {% if board.image %}
+            <img class="card-img-top" src="{{ board.image.url }}">
+            {% endif %}
+        </div>
+        <div class="card-title">
+            <a href="{% url 'delete_board' board.pk %}" class="toggle-info btn">
+                <span class="left"></span>
+                <span class="right"></span>
+            </a>
+            <h2>
+                {{ board.title }}
+            </h2>
+            <div class="card-actions">
                 <a href="{% url 'board_detail' board.pk %}" class="btn">Open</a>
             </div>
-
-
+        </div>
     </div>
-    <div class="card-flap flap1">
-
-      <div class="card-flap flap2">
-
-
-      </div>
-    </div>
-  </div>
-                    {% endif %}
-
+    {% endif %}
     {% endfor %}
-
-
     <li class="nav-item">
         <a class="nav-link" href="{% url 'board-add' %}">Create Board</a>
     </li>
 
-
-
-
-
-
-
-<!--<main class="page-content">-->
-<!--  {% for board in boards %}-->
-<!--  <div class="card">-->
-<!--    <div class="content">-->
-<!--      <h2 class="title">{{ board.title }}</h2>-->
-<!--      <p class="copy">Check out all of these gorgeous mountain trips with beautiful views of, you guessed it, the mountains</p>-->
-<!--      <button class="btn">View Trips</button>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--  {% endfor %}-->
-<!--</main>-->
-
-{% endblock %}
+    {% endblock %}
