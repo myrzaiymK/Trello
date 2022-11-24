@@ -3,7 +3,6 @@ from .views import board_detail, board_index, test_board, create_view, create_co
 
 urlpatterns = [
     path('', board_index),
-    path('board', test_board, name='boards'),
     path('boards/', board_index, name='board_index'),
     path('board/<int:pk>/', board_detail, name="board_detail"),
     path("board/add/", create_view, name="board-add"),

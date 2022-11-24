@@ -6,6 +6,9 @@
 <!--<h1 class="title">Hover over the cards</h1>-->
 <link href="{% static 'board_index_css.css' %}" rel="stylesheet" type="text/css">
 <script src="{% static 'board_index_js.js' %}"></script>
+ <li class="nav-item">
+        <a class="nav-link" href="{% url 'board-add' %}">Create Board</a>
+    </li>
 
 
 <div class="cards">
@@ -33,8 +36,6 @@
     </div>
     {% endif %}
     {% endfor %}
-    <li class="nav-item">
-        <a class="nav-link" href="{% url 'board-add' %}">Create Board</a>
-    </li>
+
 
     {% endblock %}
