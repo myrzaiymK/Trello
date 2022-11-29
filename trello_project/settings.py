@@ -22,7 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-)bdm$u1v2&vq5puj41qc35jlcbb-i2m(r%@l&b*o#xft-h5-jv"
+SECRET_KEY = ""
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -130,12 +130,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = "static/"
-# STATIC_ROOT = 'static/'
-# STATICFILES_DIRS = [
-#     'templates/static'
-# ]
-# STATIC_URL = "static/"
-# STATIC_ROOT = 'static/'
 STATICFILES_DIRS = [
     BASE_DIR / 'static/'
 ]
@@ -152,17 +146,13 @@ LOGOUT_REDIRECT_URL = "dashboard"
 LOGIN_URL = 'login'
 LOGOUT_URL = 'logout'
 
-# SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/home/'
-# SOCIAL_AUTH_LOGIN_URL = '/'
-
-
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = "smtp.gmail.com"
 
 EMAIL_PORT = 587
-EMAIL_FROM = "myrzaiymkdrmtva@gmail.com"
-EMAIL_HOST_USER = "myrzaiymkdrmtva@gmail.com"
-EMAIL_HOST_PASSWORD = "kyznrxhkuhksbfte"
+EMAIL_FROM = ""
+EMAIL_HOST_USER = ""
+EMAIL_HOST_PASSWORD = ""
 
 EMAIL_USE_TLS = True
 
@@ -178,8 +168,8 @@ AUTHENTICATION_BACKENDS = [
     'social_core.backends.google.GoogleOAuth',
 ]
 
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '177419982859-n9u9r3hdc0r5m4g87tkr75j648pgbdpv.apps.googleusercontent.com'
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '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'
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = ''
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = ''
 # SOCIAL_AUTH_GOOGLE_OAUTH_SCOPE = [...]
 
 import django_heroku
